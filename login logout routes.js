@@ -74,6 +74,17 @@ router.get('/login', async function(req,res){
     res.render('login',{
         title:'Log In'
     })
+  
+
+
+router.get('/forgot', (req, res) => res.render('forgot'));
+
+
+router.get('/reset/:id', (req, res) => {
+    
+    res.render('reset', { id: req.params.id })
+});
+
  
 });
 
