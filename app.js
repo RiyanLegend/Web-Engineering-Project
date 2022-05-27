@@ -58,6 +58,15 @@ app.use('/users',users);
 app.use('/',pages);
 
 
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+app.use('/', require('./routes/index'));
+app.use('/auth', require('./routes/auth'));
 
 var port=8000;
 app.listen(port,function(){
